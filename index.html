@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHQ-15 不安障害チェック</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 1.8em;
+            color: #444;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question-label {
+            font-weight: bold;
+            font-size: 1em;
+        }
+        .options {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .submit-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 0.9em;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .submit-btn {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="password-container">
+        <h2>パスワードを入力してください</h2>
+        <input type="password" id="password-input" placeholder="パスワード">
+        <button id="password-btn" onclick="checkPassword()">送信</button>
+    </div>
+
+    <div id="content-container">
+        <h1>PHQ-15 不安障害チェック</h1>
+        <form id="phq15-form">
+            <!-- Previous form content remains the same (all 16 questions) -->
+            <!-- (The entire form HTML from the original document should be pasted here) -->
+            <div class="question">
+                <label class="question-label">1. 緊張感、不安感または神経過敏を感じる</label>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q1" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q1" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q1" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">2. 心配することを止められない、または心配をコントロールできない</label>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q2" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q2" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q2" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">3. いろいろなことを心配しすぎる</label>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q3" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q3" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q3" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">4. くつろぐことが難しい</label>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q4" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q4" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q4" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">5. じっとしていることができないほど落ち着かない</label>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q5" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q5" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q5" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">6. いらいらしがちであり、怒りっぽい</label>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q6" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q6" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q6" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">7. 何か恐ろしいことがおこるのではないかと恐れを感じる</label>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q7" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q7" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q7" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">8. 物事に対してほとんど興味がない、または 楽しめない</label>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q8" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q8" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q8" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">9. 気分が落ち込む、憂うつになる、または絶望的な 気持ちになる</label>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q9" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q9" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q9" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">10. 体の痛み、例えば頭痛、背中の痛み、肩こりなどを感じる</label>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q10" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q10" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q10" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">11. 身体の不調があり、寝付きが悪い、または 眠れない</label>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q11" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q11" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q11" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+          <div class="question">
+                <label class="question-label">12. あまり食欲がない、または食べ過ぎる</label>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q12" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q12" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q12" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">13. 自分はダメな人間だ、人生の敗北者だと気に病 む、または自分自身あるいは家族に申し訳がない と感じる</label>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q13" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q13" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q13" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">14. 新聞を読む、またはテレビを見ることなどに集中 することが難しい</label>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q14" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q14" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q14" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">15. 他人が気づくぐらいに動きや話し方が遅くなる、 あるいは反対に、そわそわしたり、落ちつかず、 普段よりも動き回ることがある</label>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q15" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q15" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q15" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+    
+            <div class="question">
+                <label class="question-label">16. 死んだ方がましだ、あるいは自分を何らかの方法 で傷つけようと思ったことがある</label>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="0" required> 全くない</label><br>
+                    <label><input type="radio" name="q16" value="1"> 数日</label><br>
+                    <label><input type="radio" name="q16" value="2"> 半分以上</label><br>
+                    <label><input type="radio" name="q16" value="3"> ほとんど毎日</label>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" onclick="calculateScore()">送信</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const correctPassword = '3734771A';
+        const passwordContainer = document.getElementById('password-container');
+        const contentContainer = document.getElementById('content-container');
+        const phq15Form = document.getElementById('phq15-form');
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password-input');
+            
+            if (passwordInput.value === correctPassword) {
+                passwordContainer.style.display = 'none';
+                phq15Form.style.display = 'block';
+            } else {
+                alert('パスワードが間違っています。');
+                passwordInput.value = '';
+            }
+        }
+
+        function calculateScore() {
+            const form = document.getElementById('phq15-form');
+            const formData = new FormData(form);
+            let score = 0;
+
+            for (const value of formData.values()) {
+                score += parseInt(value, 10);
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `総スコア: ${score}`;
+
+            // スコアに基づいた結果の説明
+            let interpretation = '';
+            if (score <= 4) {
+                interpretation = '軽度の不安症状';
+            } else if (score <= 9) {
+                interpretation = '中等度の不安症状';
+            } else {
+                interpretation = '高度の不安症状';
+            }
+            resultDiv.textContent += ` (${interpretation})`;
+            resultDiv.style.display = 'block';
+        }
+
+        // Initially hide the form and result
+        phq15Form.style.display = 'none';
+        document.getElementById('result').style.display = 'none';
+    </script>
+</body>
+</html>
